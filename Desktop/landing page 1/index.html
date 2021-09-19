@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Menu</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src=""
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/images/sss.png" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div class="mobile-menu-icon">
+                <div class="hamburger-menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <h1>Landing page 1</h1>
+    </main>
+
+    <script src="assets/js/menu.js"></script>
+
+    <div>
+        <canvas id ="myChart"></canvas>
+    </div>
+    <Script>
+        window.onload = function () {
+
+            var limit = 50000;
+            var y = 100;    
+            var data = [];
+            var dataSeries = { type: "line" };
+            var dataPoints = [];
+            for (var i = 0; i < limit; i += 1) {
+                y += Math.round(Math.random() * 10 - 5);
+                dataPoints.push({
+                    x: i,
+                    y: y
+                });
+            }
+            dataSeries.dataPoints = dataPoints;
+            data.push(dataSeries);
+            
+            //Better to construct options first and then pass it as a parameter
+            var options = {
+                zoomEnabled: true,
+                animationEnabled: true,
+                title: {
+                    text: "Try Zooming - Panning"
+                },
+                axisY: {
+                    lineThickness: 1
+                },
+                data: data  // random data
+            };
+            
+            var chart = new CanvasJS.Chart("chartContainer", options);
+            var startTime = new Date();
+            chart.render();
+            var endTime = new Date();
+            document.getElementById("timeToRender").innerHTML = "Time to Render: " + (endTime - startTime) + "ms";
+            
+            }
+            
+    </Script>
+</body>
+
+</html>
